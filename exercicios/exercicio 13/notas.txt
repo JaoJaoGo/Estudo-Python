@@ -1,0 +1,4 @@
+João: 10.0
+Ellen: 10.0
+Jose: 6.2
+Media da turma: 8.7

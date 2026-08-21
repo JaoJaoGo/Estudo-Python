@@ -153,8 +153,10 @@
 # print(frutas)
 
 
-# -- TUPLAS --
 
+
+
+# -- TUPLAS --
 # frutas = ["maçã", "banana", "laranja", "uva"]
 # tupla_frutas = ("maçã", "banana", "laranja", "uva") # São imutáveis
 
@@ -197,8 +199,10 @@
 # print(comemoracao)
 
 
-# -- SET --
 
+
+
+# -- SET --
 # Semelhantes a listas e tuplas, mas não existe índices e não permite valores duplicados
 # lista = [1, 2, 3, 2, 1]
 # print(lista)
@@ -223,8 +227,10 @@
 # print(frutas)
 
 
-# -- FUNÇÃO --
 
+
+
+# -- FUNÇÃO --
 # def soma(a = 2, b = 2):
 #     print("Olá! Bem-vindo ao meu estudo de Python!")
 
@@ -236,8 +242,10 @@
 # print(somou)
 
 
-# -- CLASSES --
 
+
+
+# -- CLASSES --
 # class Pessoa:
 #     def __init__(self, nome, idade):
 #         self.nome = nome
@@ -376,8 +384,10 @@
 """
 
 
-# -- DICIONÁRIOS --
 
+
+
+# -- DICIONÁRIOS --
 # estoque = {}
 # produto = {"name": "Coca-cola", "price": 5.0, "quantity": 10}
 # contato = {
@@ -440,6 +450,9 @@
 #         print(f"{aluno['nome']} reprovado com nota {aluno['nota']}.")
 
 
+
+
+
 # -- MÓDULOS --
 # import utilidades
 # from utilidades import formatar_moeda
@@ -456,9 +469,160 @@
 # print(fm(preco))
 # print(datetime.date.today())
 
+# from matematica.operacao import somar
+# from strings.formatacao import apresentacao
 
-from matematica.operacao import somar
-from strings.formatacao import apresentacao
+# print(somar(5, 10))
+# print(apresentacao("João"))
 
-print(somar(5, 10))
-print(apresentacao("João"))
+# import math
+# import random
+
+# print(math.sqrt(25))
+# print(math.pi)
+# print(random.randint(1, 10))
+# print(random.choice(["A", "B", "c"]))
+# print(dir(random))
+
+
+
+
+
+# -- ARQUIVOS --
+# arquivo = open("arquivo.txt", "r")
+# conteudo = arquivo.read()
+# arquivo.close()
+# print(conteudo)
+
+# Para não precisar fechar o arquivo manualmente, use o with. Melhor para não esquecer de fechar.
+# with open("arquivo.txt", "r") as file:
+#     content = file.read()
+#     print(content)
+
+# with open("arquivo.txt", "r") as file:
+#     linhas = file.readlines()
+
+#     for linha in linhas:
+#         print(linha.strip())
+
+# Melhor forma de ler arquivo
+# with open("arquivo.txt", "r") as file:
+#     for linha in file:
+#         print(linha.strip())
+
+# mais_frutas = ["Uva\n", "Pera\n", "Melao\n"]
+
+# with open("lista.txt", "w") as file: # "w" para criar ou sobreescrever o file, "a" para adicionar ao final do file
+#     file.write("Maca\n")
+#     file.write("Banana\n")
+#     file.write("Laranja\n")
+#     file.writelines(mais_frutas)
+
+# print("Arquivo criado com sucesso!")
+
+# nome = input("Digite seu nome: ")
+
+# with open("historico.txt", "a", encoding='utf-8') as file: # encoding='utf-8' para suportar caracteres especiais e acentos
+#     file.write(f"Novo registro histórico para: {nome}\n")
+
+
+
+
+
+# -- CSV --
+import csv
+
+# with open("alunos.csv", "r", encoding="utf-8") as arquivo_csv:
+#     leitor_csv = csv.reader(arquivo_csv)
+
+#     next(leitor_csv) # Pula a primeira linha (cabeçalho)
+
+#     for linha in leitor_csv:
+#         print(linha)
+
+# with open("alunos.csv", "r", encoding="utf-8") as arquivo_csv:
+#     leitor_csv = csv.DictReader(arquivo_csv)
+
+#     #next(leitor_csv) # Pula a primeira linha (cabeçalho)
+
+#     print('\n')
+
+#     for linha in leitor_csv:
+#         maior_idade = "maior de idade" if int(linha["idade"]) >= 18 else "menor de idade"
+#         print(linha["nome"], "-", linha["cidade"], "-", maior_idade)
+
+# alunos = [
+#     ["nome", "nota", "situacao"],
+#     ["João", 8.0, "Aprovado"],
+#     ["Maria", 5.0, "Reprovado"],
+#     ["Pedro", 7.5, "Aprovado"],
+# ]
+
+# with open("resultado.csv", "w", newline="", encoding="utf-8") as arquivo:
+#     escritor = csv.writer(arquivo)
+#     escritor.writerows(alunos)
+
+# alunos = [
+#     {"nome": "João", "nota": 8.0, "situacao": "Aprovado"},
+#     {"nome": "Maria", "nota": 5.0, "situacao": "Reprovado"},
+#     {"nome": "Pedro", "nota": 7.5, "situacao": "Aprovado"},
+# ]
+
+# campos = ["nome","nota", "situacao"]
+
+# with open("resultado.csv", "w", newline="", encoding="utf-8") as arquivo:
+#     escritor = csv.DictWriter(arquivo, fieldnames=campos)
+#     escritor.writeheader()
+#     escritor.writerows(alunos)
+
+# with open("resultado.csv", "a", newline="", encoding="utf-8") as arquivo:
+#     escritor = csv.DictWriter(arquivo, fieldnames=["nome", "nota", "situacao"])
+#     escritor.writerow({"nome": "Olávia", "nota": 3, "situacao": "Reprovada"})
+
+
+
+
+
+# -- MANIPULAÇÃO DE ERROS --
+"""
++---------------------+----------------------------------------------------------+
+| `ValueError`        | Valor inválido para a operação - ex: `int("abc")`        |
+| `TypeError`         | Tipo errado = ex: `"3" + 3`                              |
+| `ZeroDivisionError` | Divisão por zero - ex: `10 / 0`                          |
+| `FileNotFoundError` | Arquivo não encontrado - ex: `open("inexistente.txt")`   |
+| `IndexError`        | Índice fora do range - ex: `lista[10]` em uma lista de 3 |
+| `KeyError`          | Chave inexistente em dicionário - `dados["idade"]`       |
+| `NameError`         | Variável usada antes de ser definida                     |
++---------------------+----------------------------------------------------------+ """
+
+# try:
+#     numero = int(input("Digite um número que irá dividir 100: "))
+#     print(f"O número dobrado é: {100 / numero}")
+# except ZeroDivisionError:
+#     print("Não é possível dividir por zero!")
+# except ValueError:
+#     print("Digite um número válido!")
+# except:
+#     print("Um erro inesperado ocorreu...")
+
+# try:
+#     nota = float(input("Digite a nota: "))
+# except ValueError:
+#     print("Nota inválida.")
+# else:
+#     if nota >= 7:
+#         print("Aprovado.")
+#     else:
+#         print("Reprovado.")
+# finally:
+#     print("Fim da execução.\n")
+
+# def calcular_media(notas):
+#     if len(notas) == 0:
+#         raise ValueError("A lista de notas não pode estar vazia.")
+#     return sum(notas) / len(notas)
+# try:
+#     notas_error = []
+#     print(calcular_media(notas_error))
+# except ValueError as e:
+#     print(f"Erro: {e}")
